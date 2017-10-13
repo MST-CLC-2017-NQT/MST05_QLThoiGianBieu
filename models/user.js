@@ -2,17 +2,16 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt-nodejs');
 var userSchema = new Schema({
-    id: { type: Number, required: true },
-    name: { type: String, required: true },
+    name: { type: String, required: true},
     email: { type: String, required: true },
     password: { type: String, required: true },
     events: {
-        id: { type: Number, required: true },
-        name: { type: String, required: true },
-        description: { type: String, required: true },
-        date: { type: Date, required: true },
-        location: { type: String, required: true },
-        priority: { type: String, required: true }
+        id: { type: Number},
+        name: { type: String},
+        description: { type: String},
+        date: { type: Date},
+        location: { type: String},
+        priority: { type: String}
     }
 });
 
