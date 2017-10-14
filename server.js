@@ -7,11 +7,17 @@ var express = require('express'),
     ejs = require('ejs'),
     flash = require('connect-flash'),
     passport = require('passport'),
+    expressHbs = require ('express-handlebars'),
     validator = require('express-validator'),
     MongoStore = require('connect-mongo')(session),
     configDB = require('./config/database.js');
 var port = 8080;
 var app = express();
+
+// 
+
+
+
 var router = express.Router();
 
 require('./config/passport');
