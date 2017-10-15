@@ -51,6 +51,19 @@ router.post('/', (req, res) => {
 
 
 });
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost/MST05_QLThoiGianBieu";
+router.get('/', (req, res) => { 
+    MongoClient.connect(url, function(err,db) {
+        var query ={};
+        db.collection('users').find(query).toArray(function(err, result) {
+            db.close();
+            res.render('listEvent.ejs',{products: result});
+        });
+    });       
+});
+
 //PUT an event:
 router.put('/:id', (req, res) => {
     //var id = req.params.id;
