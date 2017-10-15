@@ -13,7 +13,7 @@ router.use(csrfProtection);
 
 // Login
 router.post('/login', passport.authenticate('local.signin', {
-    successRedirect: '/event/listEvent',
+    successRedirect: '/event',
     failureRedirect: './login',
     failureFlash: true
 }));
