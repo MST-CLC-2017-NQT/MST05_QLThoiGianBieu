@@ -75,6 +75,7 @@ passport.use('local.signin', new LocalStrategy({
         if (!user || !user.validPassword(password)) {
             return done(null, false, { message: 'Username or password are incorrect' });
         }
+        req.session.id = user.id;
         return done(null, user);
     });
 }));
