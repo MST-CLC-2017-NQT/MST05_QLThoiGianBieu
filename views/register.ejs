@@ -5,13 +5,30 @@
     <title>Node Authentication</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+            integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='public/stylesheets/style.css'/>
+    <meta charset=”UTF-8">
+    <meta http-equiv=”X-UA-Compatible” content=”IE=edge”>
+    <meta name=”viewport” content=”width=device-width, initial-scale=1">
     <style>
-    body {
-        padding-top: 0px;
-    }
+        body         { padding-top:0px; };
+
+        h1 { 
+            display: block;
+            font-size: 5em;
+            margin-top: 0.67em;
+            margin-bottom: 0.67em;
+            margin-left: 0;
+            margin-right: 0;
+            font-weight: bold;
+        }
+
     </style>
 </head>
 
@@ -42,14 +59,13 @@
                     </div>
                     <input type="hidden" name="_csrf" id="_csrf" value="<%= csrfToken %>">
                     <button type="submit" class="btn btn-warning btn-lg">Submit</button>
-                </form>
-               
-                    <hr>
+                </form>              
+                <hr>
                     <p>Already have an account? <a href="/login">Login</a></p>
                     <p>Or go <a href="/">home</a>.</p>
                     <div class="text-center">
-                        <p>A demo by <a href="http://scotch.io">Scotch</a>.</p>
-                        <p>Visit the <a href="http://scotch.io/tutorials/javascript/easy-node-authentication-setup-and-local">tutorial</a>.</p>
+                            <p>A demo by <a>MST05_QuanLyThoiGianBieu</a>.</p>
+                            <p>Visit the <a>tutorial</a>.</p>
                     </div>
             </div>
         </div>
@@ -57,8 +73,6 @@
 <!-- Footer -->
 <% include partials/footer.ejs%>
 </div>
-=======
->>>>>>> test
 </body>
 
 </html>
