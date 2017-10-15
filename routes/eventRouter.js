@@ -15,16 +15,25 @@ function handleError(res, reason, message, code) {
     res.status(code || 500).json({ "error": message });
 }
 //GET list event:
+
 router.get('/list', (req, res) => {
     var uid = req.session.uid;
-    User.find({_id:uid}, (err,user) =>{
+    User.find({_id:uid}, (err,data) =>{
         if(err){
             handleError(res, err.message, "Failed to find event");
         }
         else {
-            res.render('listEvent.ejs', {csrfToken: req.csrfToken(),messages: '', user:user});
+            
+            res.render('listEvent.ejs', {csrfToken: req.csrfToken(),messages: '', data:data});
         }
     });
+    // MongoClient.connect(url, function(err,db) {
+    //     var query ={};
+    //     db.collection('users').find(query).toArray(function(err, result) {
+    //         db.close();
+    //         res.render('listEvent.ejs',{csrfToken: req.csrfToken(),messages: '', data: result});
+    //     });
+    // });  
     
 });
 
@@ -54,23 +63,12 @@ router.post('/', (req, res) => {
                 }
             });
         } else {
-            res.status(200).json(doc);
+            res.redirect('/event');
+            
         }
     });
 
 
-});
-
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost/MST05_QLThoiGianBieu";
-router.get('/', (req, res) => { 
-    MongoClient.connect(url, function(err,db) {
-        var query ={};
-        db.collection('users').find(query).toArray(function(err, result) {
-            db.close();
-            res.render('listEvent.ejs',{products: result});
-        });
-    });       
 });
 
 //PUT an event:

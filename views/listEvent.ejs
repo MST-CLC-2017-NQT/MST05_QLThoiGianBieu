@@ -1,79 +1,74 @@
 <!doctype html>
 <html>
+
 <head>
-        <title>Home</title>
-        
-        <%- include('partials/header0') %>
-        
+    <title>Home</title>
+    <%- include('partials/header0') %>
+
 </head>
 <body>
     <!-- Header -->
     <%- include('partials/header') %>
-            
-            <div>
-                <div class=" text-center">
-                    <h1> <b class="fa fa-calendar"> <b> ONLINE TIMETABLE </b></b></h1>
+        <div>
+            <div class=" text">
 
-                    <div class="list-group">
-                        <a class="list-group-item active">
-                            <b>LIST EVENT</b>
-                        </a>
-                        <p></p>
-                            <div class="row">
-                            <div class="col-sm-6 col-md-4">
-                                <div class="thumbnail">
-                                    <img src="https://www.iconexperience.com/_img/v_collection_png/512x512/shadow/date_time_preferences.png" alt="..." class="img-responsive">
-                                    <div class="caption">
-                                            <% products.forEach(function(user){ %>
-                                                <div class="row">
-                                                  <div class="col-sm-6 col-md-4">
-                                                      <div class="thumbnail">
-                                                          <img src="http://baomoi-photo-1.zadn.vn/17/09/12/47/23256024/1_62778.png" alt="..." class="img-responsive">
-                                                          <div class="caption">
-                                                              <h1><%= user.eventname %></h1>
-                                                              <h2><%= user.descript %></h2>
-                                                              <h3>$<%= user.date %></h3>
-                                                              <h4>$<%= user.localtion %></h4>
-                                                              <h5>$<%= user.priority %></h5>
-                                                              <div class="clearfix">
-                                                                  <a href="/add-to-cart/<%= user._id %>" class="btn btn-success pull-right" role="button">Add to Cart</a>
-                                                              </div>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                                  
-                                              <% })%>
-                                              <div class="clearfix">
-                                                    <button type="button" class="btn btn-info">Edit</button>
-                                                    <button type="button" class="btn btn-warning">Cancel</button>
-                                                    <button type="button" class="btn btn-danger">Remove</button>
-                                            </div>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <div class="row">
-                                    <div class="col-sm-6 col-md-4">
-                                        <div class="thumbnail">
-                                            <img src="https://www.iconexperience.com/_img/v_collection_png/512x512/shadow/date_time_preferences.png" alt="..." class="img-responsive">
-                                            <div class="caption">
-                                                
-                                                <div class="clearfix">
-                                                        <button type="button" class="btn btn-info">Edit</button>
-                                                        <button type="button" class="btn btn-warning">Cancel</button>
-                                                        <button type="button" class="btn btn-danger">Remove</button>
+                <div class="text-center">
+                    <h1> <b class="fa fa-calendar"> <b> ONLINE TIMETABLE </b></b>
+                    </h1>
+                    
+                </div>
+                <p></p>
+                <div>
+                        <div class="list-group">
+                                <a class="list-group-item active">
+                                        <b>LIST EVENT</b>
+                                    </a>
+
+                                    <% data.forEach(function(user){ %>
+                                        <%for(var i=0; i < user.events.length; i++) { %>
+                                            <div class="row">
+                                                <div class="col-sm-6 col-md-4">
+                                                    <div class="thumbnail">
+                                                        <div class="caption">
+                                                            <p>Event Name:
+                                                                <%= user.events[i].name %>
+                                                            </p>
+                                                            <p>Description:
+                                                                <%= user.events[i].description %>
+                                                            </p>
+                                                            <p>Date:
+                                                                <%= user.events[i].date %>
+                                                            </p>
+                                                            <p>Localtion:
+                                                                <%= user.events[i].localtion %>
+                                                            </p>
+                                                            <p>Priority:
+                                                                <%= user.events[i].priority %>
+                                                            </p>
+                                                            <div class="clearfix">
+                                                                <button type="button" class="btn btn-info">Edit</button>
+                                                                <button type="button" class="btn btn-warning">Cancel</button>
+                                                                <button type="button" class="btn btn-danger">Remove</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
+                                                <% }%>
+                                                    <% })%>
+
+                                                    
                                             </div>
-                                        </div>
-                                        
-                                    </div>
+                                            <% include partials/footer.ejs%>
+                            </div>
+
                             
+                </div>
                 
-                </div>  
+            </div>
+            <!-- Footer -->
+
         </div>
-                <!-- Footer -->
-            
-    </div>      
-    <% include partials/footer.ejs%> 
+        
 </body>
+
 </html>
