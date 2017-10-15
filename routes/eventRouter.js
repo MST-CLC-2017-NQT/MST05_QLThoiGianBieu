@@ -12,14 +12,14 @@ var User = require('../models/user');
 
 function handleError(res, reason, message, code) {
     console.log("ERROR: " + reason);
-    res.status(code || 500).json({"error": message});
+    res.status(code || 500).json({ "error": message });
 }
 //GET:
 router.get('/', (req, res) => {
-    res.render('addEvent.ejs', {csrfToken: req.csrfToken(),messages: ''});
+    res.render('addEvent.ejs', { csrfToken: req.csrfToken(), messages: '' });
 });
 router.get('/listEvent', (req, res) => {
-    res.render('listEvent.ejs', {messages: ''});
+    res.render('listEvent.ejs', { messages: '' });
 });
 
 //POST:
@@ -32,42 +32,44 @@ router.post('/', (req, res) => {
     let date = req.body.date;
     let location = req.body.location;
     let priority = req.body.priority;
-    var updateDoc = {id: new ObjectID(),name:name, description:description, date:date, location:location, priority: "important"};
-    User.update({_id: new ObjectID(uid)}, {'$push':{'events':updateDoc}}, function(err, doc) {
+    var updateDoc = { id: new ObjectID(), name: name, description: description, date: date, location: location, priority: "important" };
+    User.update({ _id: new ObjectID(uid) }, { '$push': { 'events': updateDoc } }, function (err, doc) {
         if (err) {
-            User.update({_id: new ObjectID(uid)}, {'$set':{'events':[updateDoc]}}, function(err, doc) {
+            User.update({ _id: new ObjectID(uid) }, { '$set': { 'events': [updateDoc] } }, function (err, doc) {
                 if (err) {
-                handleError(res, err.message, "Failed to update student");
+                    handleError(res, err.message, "Failed to update student");
                 } else {
-                res.status(200).json(doc);
+                    res.status(200).json(doc);
                 }
             });
         } else {
-        res.status(200).json(doc);
+            res.status(200).json(doc);
         }
     });
 
-    
-    });
+
+});
 //PUT:
 router.put('/:id', (req, res) => {
     var id = req.params.id;
     console.log(id);
-    mongoose.connect(configDB.url, function() {
+    mongoose.connect(configDB.url, function () {
         db.collection("users").findAndModify({
-            query: {_id: mongojs.ObjectId(id)},
-            update: 
-                {$set: 
-                    {
-                        name: req.body.name, 
-                        description: req.body.description, 
-                        date: req.body.date, 
-                        location: req.body.location, 
-                        priority: req.body.priority
-                    }
-                },
-            new: true}, function (err, doc) {
-                  res.json(doc);
+            query: { _id: mongojs.ObjectId(id) },
+            update:
+            {
+                $set:
+                {
+                    name: req.body.name,
+                    description: req.body.description,
+                    date: req.body.date,
+                    location: req.body.location,
+                    priority: req.body.priority
+                }
+            },
+            new: true
+        }, function (err, doc) {
+            res.json(doc);
         });
     });
 });
@@ -76,8 +78,8 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
     var id = req.params.id;
     console.log(id);
-    mongoose.connect(configDB.url, function() {
-        db.collection("users").remove({_id: mongojs.ObjectId(id)}, function(err, doc) {
+    mongoose.connect(configDB.url, function () {
+        db.collection("users").remove({ _id: mongojs.ObjectId(id) }, function (err, doc) {
             res.json(doc);
             //res.redirect("");
         });
