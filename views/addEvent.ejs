@@ -29,6 +29,19 @@
         }
 
     </style>
+    <script>
+        function logout() {
+            
+            var _csrf = document.getElementById('_csrf').value;
+            $.ajax({
+                type: 'POST',
+                url: '/user/logout',
+                headers: { 'XSRF-TOKEN': _csrf },
+                success: function (res) {
+                }
+            });
+        }
+    </script>
 </head>
 <body>
     <!-- Header -->

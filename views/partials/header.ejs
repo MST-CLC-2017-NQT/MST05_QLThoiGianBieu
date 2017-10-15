@@ -33,7 +33,7 @@
     </li>
     <li>
       <a href="/" onclick="logout()">
-        <i class="fa fa-sign-out" method="POST" aria-hidden="true"></i> Logout
+        <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
           <span class="badge"></span>
       </a>
   </li>
@@ -48,5 +48,5 @@
       </li>
     </ul>
   </div><!-- /.navbar-collapse -->
-  
+  <input type="hidden" name="_csrf" id="_csrf" value="<%= csrfToken %>">
 </nav>
