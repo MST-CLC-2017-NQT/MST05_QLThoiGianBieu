@@ -13,7 +13,7 @@ router.use(csrfProtection);
 
 // Login
 router.post('/login', passport.authenticate('local.signin', {
-    successRedirect: '/event',
+    successRedirect: '/event/list',
     failureRedirect: './login',
     failureFlash: true
 }));
@@ -34,7 +34,7 @@ router.post('/logout', function (req, res) {
 // Login check
 router.get('/loggedin', function(req, res, next) {
     if (req.isAuthenticated()){
-        res.redirect('/event');
+        res.redirect('/event/list');
         return next();
     }
     res.redirect('./login');

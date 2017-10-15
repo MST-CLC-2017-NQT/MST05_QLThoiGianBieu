@@ -15,10 +15,6 @@ var port = 8080;
 var app = express();
 
 // setup 
-
-
-
-
 var router = express.Router();
 
 require('./config/passport');
