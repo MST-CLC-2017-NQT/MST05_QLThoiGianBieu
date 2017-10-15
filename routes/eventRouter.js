@@ -16,10 +16,19 @@ function handleError(res, reason, message, code) {
 }
 //GET list event:
 router.get('/list', (req, res) => {
-    res.render('listEvent.ejs', {csrfToken: req.csrfToken(),messages: ''});
+    var uid = req.session.uid;
+    User.find({_id:uid}, (err,user) =>{
+        if(err){
+            handleError(res, err.message, "Failed to find event");
+        }
+        else {
+            res.render('listEvent.ejs', {csrfToken: req.csrfToken(),messages: '', user:user});
+        }
+    });
+    
 });
 
-//GET an event:
+//GET add event page:
 router.get('/', (req, res) => {
     res.render('addEvent.ejs', {csrfToken: req.csrfToken(),messages: ''});
 });
