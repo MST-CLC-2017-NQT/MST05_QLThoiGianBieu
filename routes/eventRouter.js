@@ -51,7 +51,8 @@ router.post('/', (req, res) => {
 });
 //PUT:
 router.put('/:id', (req, res) => {
-    var id = req.params.id;
+    //var id = req.params.id;
+    var id = req.session.id;
     console.log(id);
     mongoose.connect(configDB.url, function () {
         db.collection("users").findAndModify({

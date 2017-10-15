@@ -49,6 +49,7 @@ app.use(validator());
 app.use(passport.initialize());
 app.use(passport.session());
 app.set('view engine', 'ejs');
+
 // CSS
 app.use(express.static('stylesheets'));
 // Routes

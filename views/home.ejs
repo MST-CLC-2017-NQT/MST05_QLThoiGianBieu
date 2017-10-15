@@ -2,56 +2,92 @@
 <html>
 
 <head>
-    <title>Product Cart</title>
+    <title>DashBoard</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+            integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <link rel='stylesheet' href='public/stylesheets/style.css' />
-    <meta charset="UTF-8">
+    <link rel='stylesheet' href='public/stylesheets/style.css'/>
+    <meta charset=”UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content= " width="device-width, initial-scale=1">
     <style>
-        body {
-            padding-top: 0px;
+        body         { padding-top:0px; };
+
+        h1 { 
+            display: block;
+            font-size: 5em;
+            margin-top: 0.67em;
+            margin-bottom: 0.67em;
+            margin-left: 0;
+            margin-right: 0;
+            font-weight: bold;
         }
+
     </style>
-    <script>
-        function logout() {
-            var _csrf = document.getElementById('_csrf').value;
-            $.ajax({
-                type: 'POST',
-                url: '/user/logout',
-                headers: { 'XSRF-TOKEN': _csrf },
-                error: function (res) {
-                    btn.parentNode.parentNode.className = "";
-                },
-                success: function (res) {
-                }
-            });
-        }
-    </script>
+
+    
+
 </head>
 
 <body>
     <!-- Header -->
     <%- include('partials/header') %>
-        <div class="container">
-            <input type="hidden" name="_csrf" id="_csrf" value="<%= csrfToken %>">
-            <div class="jumbotron text-center">
-                <h1>
-                    <span class="fa fa-lock"></span> QUAN LY THOI GIAN BIEU</h1>
+            
+            <div>
+                <div class=" text-center">
+                    <h1> <b class="fa fa-calendar"> <b> ONLINE TIMETABLE </b></b></h1>
 
-                <a href="/event/addEvent" class="btn btn-default">
-                    <span class="fa fa-user"></span> Local</a>
+                    <div class="list-group">
+                        <a class="list-group-item active">
+                            <b>LIST EVENT</b>
+                        </a>
+                        <p></p>
+                            <div class="row">
+                            <div class="col-sm-6 col-md-4">
+                                <div class="thumbnail">
+                                    <img src="https://www.iconexperience.com/_img/v_collection_png/512x512/shadow/date_time_preferences.png" alt="..." class="img-responsive">
+                                    <div class="caption">
+                                        
+                                        <div class="clearfix">
+                                                <button type="button" class="btn btn-info">Edit</button>
+                                                <button type="button" class="btn btn-warning">Cancel</button>
+                                                <button type="button" class="btn btn-danger">Remove</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="row">
+                                    <div class="col-sm-6 col-md-4">
+                                        <div class="thumbnail">
+                                            <img src="https://www.iconexperience.com/_img/v_collection_png/512x512/shadow/date_time_preferences.png" alt="..." class="img-responsive">
+                                            <div class="caption">
+                                                
+                                                <div class="clearfix">
+                                                        <button type="button" class="btn btn-info">Edit</button>
+                                                        <button type="button" class="btn btn-warning">Cancel</button>
+                                                        <button type="button" class="btn btn-danger">Remove</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                            
+                
+                </div>
 
-            </div>
-            <!-- Footer -->
-            <% include partials/footer.ejs%>
-
+                    <a href="/event/addEvent" class="btn btn-default"><span class="fa fa-user"></span> Local</a>   
         </div>
-
+                <!-- Footer -->
+            
+    </div>      
+            <% include partials/footer.ejs%> 
 </body>
 
 </html>
