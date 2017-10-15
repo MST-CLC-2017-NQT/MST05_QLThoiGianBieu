@@ -3,16 +3,13 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     ejs = require('ejs'),
     passport = require('passport');
-    mongoose = require('mongoose');
-var User = require('../models/user');
+mongoose = require('mongoose');
+
 var csrf = require('csurf'),
     csrfProtection = csrf();
 
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(csrfProtection);
-
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost/MST05_QLThoiGianBieu";
 
 // Login
 router.post('/login', passport.authenticate('local.signin', {

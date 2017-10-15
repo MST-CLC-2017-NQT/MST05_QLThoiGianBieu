@@ -12,9 +12,9 @@
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel='stylesheet' href='public/stylesheets/style.css'/>
-    <meta charset=”UTF-8">
-    <meta http-equiv=”X-UA-Compatible” content=”IE=edge”>
-    <meta name=”viewport” content=”width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body         { padding-top:0px; };
 
@@ -29,17 +29,42 @@
         }
 
     </style>
+<<<<<<< HEAD
 
     
 
+=======
+    <script>
+        function logout(){
+            var _csrf = document.getElementById('_csrf').value;
+            $.ajax({
+            type: 'POST',
+            url: '/user/logout',
+            headers: {'XSRF-TOKEN':_csrf},
+            error: function(res) {
+                btn.parentNode.parentNode.className = "";
+            },
+            success: function(res) {
+            }
+        });
+        }
+    </script>
+>>>>>>> 0688c70a1d9540a0650014b75dc0a9f9e485c30a
 </head>
 <body>
     <!-- Header -->
     <%- include('partials/header') %>
+<<<<<<< HEAD
             
             <div>
                 <div class=" text-center">
                     <h1> <b class="fa fa-calendar"> <b> ONLINE TIMETABLE </b></b></h1>
+=======
+<div class="container">
+        <input type="hidden" name="_csrf" id="_csrf" value="<%= csrfToken %>">
+    <div class="jumbotron text-center">
+        <h1><span class="fa fa-lock"></span> QUAN LY THOI GIAN BIEU</h1>
+>>>>>>> 0688c70a1d9540a0650014b75dc0a9f9e485c30a
 
                     <div class="list-group">
                         <a class="list-group-item active">
