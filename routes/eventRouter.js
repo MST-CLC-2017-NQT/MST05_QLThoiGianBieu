@@ -15,8 +15,19 @@ router.get('/', (req, res) => {
         res.send(html);
     })
 });
-//POST:
 
+router.get('/addEvent', (req, res) => {
+    res.render('addEvent.ejs', {csrfToken: req.csrfToken(), messages: ''});
+});
+
+router.get('/listEvent', (req, res) => {
+    res.render('listEvent.ejs', {messages: ''});
+});
+
+//POST:
+router.post('/addEvent', (req, res) => {
+    res.redirect('/');
+});
 //PUT:
 router.put('/:id', (req, res) => {
     var id = req.params.id;
@@ -41,5 +52,15 @@ router.put('/:id', (req, res) => {
 });
 
 //DELETE:
+router.delete('/:id', (req, res) => {
+    var id = req.params.id;
+    console.log(id);
+    mongoose.connect(configDB.url, function() {
+        db.collection("users").remove({_id: mongojs.ObjectId(id)}, function(err, doc) {
+            res.json(doc);
+            //res.redirect("");
+        });
+    });
+});
 
 module.exports = router;

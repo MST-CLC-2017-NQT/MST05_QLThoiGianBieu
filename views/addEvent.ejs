@@ -4,11 +4,20 @@
     <title>Node Authentication</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+            integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel='stylesheet' href='public/stylesheets/style.css'/>
+    <meta charset=”UTF-8">
+    <meta http-equiv=”X-UA-Compatible” content=”IE=edge”>
+    <meta name=”viewport” content=”width=device-width, initial-scale=1">
     <style>
-        body         { padding-top:80px; }
+        body         { padding-top:0px; }
     </style>
 </head>
 <body>
+    <!-- Header -->
+    <%- include('partials/header') %>
 <div class="container">
 <div class="col-sm-6 col-sm-offset-3">
     <h1><span class="fa fa-calendar"></span> Add an Event</h1>
@@ -18,35 +27,33 @@
     <% } %>
 
     <!-- PRODUCT FORM -->
-    <form action="/addEvent" method="post">
+    <form action="/event/addevent" method="post">
         <div class="form-group">
             <label>Event Name</label>
             <input type="text" class="form-control" name="eventname">
         </div>
         <div class="form-group">
-                <label>From</label>
-                <input type="date" class="form-control" name="from">
-            </div>
-        
-        <div class="form-group">
-            <label>Where</label>
-            <input type="text" class="form-control" name="where">
-        </div>
-        <div class="form-group">
             <label>Description *</label>
             <input type="text" class="form-control" name="descript">
         </div>
-        <div>
-            <form>
-                <div class="form-group">
-                  <label>File</label>
-                  <input type="file" class="form-control-file" name="file">
-                </div>
-              </form>
+        <div class="form-group">
+            <label>Date</label>
+            <input type="date" class="form-control" name="date">
         </div>
-        <button type="button" class="btn btn-primary">Upload</button>
-        <button type="submit" class="btn btn-warning btn-lg">Add</button>
-        <button type="button" class="btn btn-danger">Cancel</button>
+        <div class="form-group">
+            <label>Location</label>
+            <input type="text" class="form-control" name="location">
+        </div>
+        <div class="control-group">
+            <label>Prority</label>
+            <select>
+                <option value="important">Important</option>
+                <option value="unimportant">Unimportant</option>
+            </select>
+        </div>
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <button type="submit" class="btn btn-warning">Add</button>
+        
     </form>
     <hr>
 
