@@ -15,11 +15,11 @@ function handleError(res, reason, message, code) {
     res.status(code || 500).json({ "error": message });
 }
 //GET:
-router.get('/', (req, res) => {
-    res.render('addEvent.ejs', { csrfToken: req.csrfToken(), messages: '' });
+router.get('/addEvent', (req, res) => {
+    res.render('addEvent.ejs', {csrfToken: req.csrfToken(),messages: ''});
 });
-router.get('/listEvent', (req, res) => {
-    res.render('listEvent.ejs', { messages: '' });
+router.get('/', (req, res) => {
+    res.render('listEvent.ejs', {csrfToken: req.csrfToken(),messages: ''});
 });
 
 //POST:
