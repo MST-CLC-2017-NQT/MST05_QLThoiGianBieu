@@ -14,15 +14,17 @@ function handleError(res, reason, message, code) {
     console.log("ERROR: " + reason);
     res.status(code || 500).json({ "error": message });
 }
-//GET:
-router.get('/addEvent', (req, res) => {
-    res.render('addEvent.ejs', {csrfToken: req.csrfToken(),messages: ''});
-});
-router.get('/', (req, res) => {
+//GET list event:
+router.get('/list', (req, res) => {
     res.render('listEvent.ejs', {csrfToken: req.csrfToken(),messages: ''});
 });
 
-//POST:
+//GET an event:
+router.get('/', (req, res) => {
+    res.render('addEvent.ejs', {csrfToken: req.csrfToken(),messages: ''});
+});
+
+//POST an event:
 router.post('/', (req, res) => {
     //var user = new User();
     var uid = req.session.uid;
@@ -49,7 +51,7 @@ router.post('/', (req, res) => {
 
 
 });
-//PUT:
+//PUT an event:
 router.put('/:id', (req, res) => {
     //var id = req.params.id;
     var id = req.session.id;
@@ -75,7 +77,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-//DELETE:
+//DELETE an event:
 router.delete('/:id', (req, res) => {
     var id = req.params.id;
     console.log(id);
