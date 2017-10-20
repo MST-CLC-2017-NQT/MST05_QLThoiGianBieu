@@ -27,13 +27,6 @@ router.get('/list', (req, res) => {
             res.render('listEvent.ejs', {csrfToken: req.csrfToken(),messages: '', data:data});
         }
     });
-    // MongoClient.connect(url, function(err,db) {
-    //     var query ={};
-    //     db.collection('users').find(query).toArray(function(err, result) {
-    //         db.close();
-    //         res.render('listEvent.ejs',{csrfToken: req.csrfToken(),messages: '', data: result});
-    //     });
-    // });  
     
 });
 
