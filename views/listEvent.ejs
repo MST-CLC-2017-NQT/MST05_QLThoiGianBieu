@@ -4,7 +4,6 @@
 <head>
     <title>Home</title>
     <%- include('partials/header0') %>
-
 </head>
 <body>
     <!-- Header -->
@@ -15,21 +14,26 @@
                 <div class="text-center">
                     <h1> <b class="fa fa-calendar"> <b> ONLINE TIMETABLE </b></b>
                     </h1>
-                    
-                </div>
+                    <div class="list-group">
+                        <a class="list-group-item active">
+                               <h4> <b>LIST EVENT</b></h4>
+                                <p></p>
+                            </a>
+                        </div>
+                 </div>
+                
                 <p></p>
                 <div>
-                        <div class="list-group">
-                                <a class="list-group-item active">
-                                        <b>LIST EVENT</b>
-                                    </a>
-
+                    <div class="row">
                                     <% data.forEach(function(user){ %>
                                         <%for(var i=0; i < user.events.length; i++) { %>
-                                            <div class="row">
+                                            
                                                 <div class="col-sm-6 col-md-4">
                                                     <div class="thumbnail">
                                                         <div class="caption">
+                                                                <p>ID:
+                                                                        <%= user.events[i].id %>
+                                                                    </p>
                                                             <p>Event Name:
                                                                 <%= user.events[i].name %>
                                                             </p>
@@ -45,11 +49,11 @@
                                                             <p>Priority:
                                                                 <%= user.events[i].priority %>
                                                             </p>
-                                                            <div class="clearfix">
+                                                            <p><div class="clearfix-center">
                                                                 <button type="button" class="btn btn-info">Edit</button>
                                                                 <button type="button" class="btn btn-warning">Cancel</button>
                                                                 <button type="button" class="btn btn-danger">Remove</button>
-                                                            </div>
+                                                            </div></p>
                                                         </div>
                                                     </div>
                                                 </div>

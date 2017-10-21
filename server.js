@@ -7,17 +7,16 @@ var express = require('express'),
     ejs = require('ejs'),
     flash = require('connect-flash'),
     passport = require('passport'),
-    expressHbs = require ('express-handlebars'),
     validator = require('express-validator'),
-    MongoStore = require('connect-mongo')(session),
-    configDB = require('./config/database.js');
+    MongoStore = require('connect-mongo')(session);
+var configDB = require('./config/database.js');
 var port = 8080;
 var app = express();
 
 // setup 
 var router = express.Router();
 
-require('./config/passport');
+require('./config/authentication_setup');
 
 //database config:
 mongoose.connect(configDB.url);
@@ -31,14 +30,7 @@ app.use(session({
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
     cookie: { maxAge: 180 * 60 * 1000 }
 }));
-passport.serializeUser(function(user, done) {
-  done(null, user);
-});
-
-passport.deserializeUser(function(user, done) {
-  done(null, user);
-});
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     res.session = req.session;
     next();
 });
@@ -62,5 +54,5 @@ app.listen(port, () => {
 
 //get home page
 app.get('/', (req, res) => {
-    res.redirect('/user/loggedin');
+    res.redirect('/event/list');
 })

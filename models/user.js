@@ -1,19 +1,14 @@
 var mongoose = require('mongoose');
+var Event = require('../models/event');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt-nodejs');
+mongoose.Promise = global.Promise;
+
 var userSchema = new Schema({
-    name: { type: String, required: true },
-    email: { type: String, required: true },
+    name: { type: String, required: true, maxlength: [30, 'Only be maximum 30 characters'], match: [/^([^-!$%^&*()_+|~=`{}[\]:/;<>?,.@#]{1,})$/, 'Only letter or number are allowed'] },
+    email: { type: String, required: true, match: [/.+\@.+\..+/, 'Only email are allowed'] },
     password: { type: String, required: true },
-    events: {
-        type: Object,
-        id: { type: String },
-        name: { type: String },
-        description: { type: String },
-        date: { type: Date },
-        location: { type: String },
-        priority: { type: String }
-    }
+    events: []
 });
 
 userSchema.methods.encryptPassword = function (password) {

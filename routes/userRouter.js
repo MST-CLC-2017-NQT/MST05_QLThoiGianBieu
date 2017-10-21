@@ -3,7 +3,6 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     ejs = require('ejs'),
     passport = require('passport');
-mongoose = require('mongoose');
 
 var csrf = require('csurf'),
     csrfProtection = csrf();
